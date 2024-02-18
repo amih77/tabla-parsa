@@ -36,19 +36,15 @@ class MongoDBUtils:
 
     def insert(self, collection_name: str, data: dict) -> str:
         sanitize_data(data)
-        t = time.time()
         result = self.get_collection(collection_name).insert_one(data)
-        print(f"took {time.time() - t} to insert")
         return result.inserted_id
 
     def fetch(
         self, collection_name: str, filter_: dict, single_result: bool
     ) -> Union[list[dict | None], dict | None]:
         sanitize_data(filter_)
-        t = time.time()
         filter_["is_archived"] = False
         data = self.get_collection(collection_name).find(filter=filter_)
-        print(f"took {time.time() - t} to fetch")
         return data[0] if single_result else data
 
     def update(self, collection_name: str, filter_: dict, update_data: dict):
