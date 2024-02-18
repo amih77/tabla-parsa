@@ -1,0 +1,20 @@
+{
+  "db": {
+    "name": "documents-data",
+    "uri": "mongodb+srv://{username}:{password}@cluster0.1wobhuh.mongodb.net/?retryWrites=true&w=majority"
+  },
+  "discrepancies": {
+    "validations_to_compute": ["header", "rows", "footer"],
+    "validation_params": {
+      "header": {
+        "min_length": 20
+      },
+      "rows": {
+        "max_first_row_sum": 10000
+      },
+      "footer": {
+        "max_date": "2013-02-02"
+      }
+    }
+  }
+}
